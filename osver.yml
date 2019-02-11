@@ -1,0 +1,17 @@
+---
+- name : Run Puppet syntax check
+  hosts: Puppet
+#  become: yes
+#  become_method: sudo
+  #serial: 1
+ # vars_files:
+ #   - /opt/Zonehawk_Ansible/AUDA/password.yaml
+
+
+  tasks:
+  - name: run manifest syntax check
+    shell: cat /etc/redhat-release
+    register: etc_issue
+#  - debug:
+#    msg: "{{ hostvars[inventory_hostname].ansible_distribution }}"
+  - debug: msg="{{etc_issue.stdout_lines}}"
