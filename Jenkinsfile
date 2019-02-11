@@ -11,5 +11,10 @@ pipeline {
         sh 'echo "ALL GOOD"'
       }
     }
+    stage('OSVer') {
+      steps {
+        ansiblePlaybook(playbook: 'osver.yml', become: true, becomeUser: 'lnxcfg', colorized: true, disableHostKeyChecking: true, inventory: 'hosts')
+      }
+    }
   }
 }
